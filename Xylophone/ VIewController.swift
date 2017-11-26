@@ -21,8 +21,12 @@ class ViewController: UIViewController, AVAudioPlayerDelegate{
 
 
     @IBAction func notePressed(_ sender: UIButton) {
-        let url = Bundle.main.url(forResource: "note\(sender.tag)", withExtension: "wav")
-
+        playSound(senderTag: sender.tag)
+    }
+    
+    func playSound(senderTag: Int) {
+        let url = Bundle.main.url(forResource: "note\(senderTag)", withExtension: "wav")
+        
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
